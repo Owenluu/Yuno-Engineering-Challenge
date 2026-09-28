@@ -161,10 +161,12 @@ These nine BINs are **22% of card volume but 34% of all lost card approvals** (1
 > We've finished the investigation. Here's what you need for your CFO and for Friday.
 >
 > **Bottom line**
+>
 > - We found **three causes** and can fix **~17 of the 22 lost points (~$216K/week) within 7 days**, with close to zero engineering work.
 > - We expect to be **back to ~79% within 6 weeks**.
 >
 > **What happened**
+>
 > 1. **The "challenge all" security check is the main cause (~13 pts).** Since Day 18, every card payment asks the rider for a bank code or app approval, including returning riders paying ~$5 for a ride. Many don't finish that step. Failed security checks went from **4% to 29% of all declines**. Wallets, PIX and OXXO don't use this check, and they didn't drop at all.
 > 2. **Our retry settings made it worse (~4 pts).** That's on Yuno. We were retrying declined cards too aggressively, which led some banks to block further attempts. We're fixing this today.
 > 3. **Six Adyen merchant accounts in LATAM have expired certificates (~2 pts).** Adyen found this on Day 28. It's still open.
@@ -173,6 +175,7 @@ These nine BINs are **22% of card volume but 34% of all lost card approvals** (1
 > **Your fraud concern is valid, and we'll keep protecting Colombia.** Colombia chargebacks at 1.4% are close to Mastercard's 1.5% penalty threshold. We'll keep security checks where the risk is (new cards in Colombia, new devices, rides over $30, cards with past disputes) and turn them off for everyone else. Excess Colombia chargebacks cost roughly **~$33K/month**. The blanket rule is costing **~$165K/week**.
 >
 > **What we need from you**
+>
 > - ✅ **Today:** approve the targeted security-check rule. We'll roll it out to 20% of traffic first and watch fraud signals for 24h before going to 100%.
 > - ✅ **Today:** ask your team to upload the new Adyen credentials to the Yuno dashboard once Adyen sends them. We're routing those accounts to dLocal in the meantime.
 > - ✅ **This week:** give us 1 engineer for 2–3 days to check how the app's security-check screens work since the v4.8 release.
@@ -210,4 +213,4 @@ These nine BINs are **22% of card volume but 34% of all lost card approvals** (1
 
 ---
 
-*Appendix: every derived figure in this document can be reproduced from the scenario tables with `analysis/verify_numbers.py`.*
+*Appendix: every derived figure was recomputed from the raw scenario tables with a verification script (volume-weighted rates, incremental declines, BIN share of lost approvals) to keep numbers consistent across all four sections.*
